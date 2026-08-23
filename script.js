@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     // ==========================================
-    // 1. LÓGICA DE LOGIN, CADASTRO E MEMÓRIA
+    // 1. LÓGICA DE LOGIN E CADASTRO
     // ==========================================
     const telaLogin = document.getElementById('tela-login');
     const telaCadastro = document.getElementById('tela-cadastro');
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const formLogin = telaLogin.querySelector('form');
         const formCadastro = telaCadastro.querySelector('form');
 
-        // Quando o usuário faz LOGIN
         if (formLogin) {
             formLogin.addEventListener('submit', function(evento) {
                 evento.preventDefault(); 
@@ -39,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
 
                 if (emailDigitado) {
-                    // Extrai o nome do email (ex: "cleber@gmail.com" vira "Cleber")
                     let nomeExtraido = emailDigitado.split('@')[0];
                     nomeExtraido = nomeExtraido.charAt(0).toUpperCase() + nomeExtraido.slice(1);
 
@@ -51,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        // Quando o usuário faz CADASTRO
         if (formCadastro) {
             formCadastro.addEventListener('submit', function(evento) {
                 evento.preventDefault();
@@ -79,21 +76,58 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // ==========================================
-    // 2. CARREGAR DADOS NA PÁGINA DE PERFIL
+    // 2. DADOS DO PERFIL E BOTAO EDITAR
     // ==========================================
     const perfilNome = document.getElementById('perfilNome');
     const perfilEmail = document.getElementById('perfilEmail');
+    const perfilTelefone = document.getElementById('perfilTelefone');
+    const perfilCidade = document.getElementById('perfilCidade');
+    const perfilData = document.getElementById('perfilData');
+    const btnEditarDados = document.getElementById('btnEditarDados');
 
     if (perfilNome && perfilEmail) {
-        const nomeSalvo = localStorage.getItem('usuarioNome');
-        const emailSalvo = localStorage.getItem('usuarioEmail');
+        // Carrega dados do perfil salvos
+        perfilNome.textContent = localStorage.getItem('usuarioNome') || 'Usuário';
+        perfilEmail.textContent = localStorage.getItem('usuarioEmail') || 'usuario@email.com';
+        if (perfilTelefone) perfilTelefone.textContent = localStorage.getItem('usuarioTelefone') || '(11) 98765-4321';
+        if (perfilCidade) perfilCidade.textContent = localStorage.getItem('usuarioCidade') || 'São Paulo, SP';
 
-        if (nomeSalvo) perfilNome.textContent = nomeSalvo;
-        if (emailSalvo) perfilEmail.textContent = emailSalvo;
+        // Registra o mês/ano atual se ainda não houver data salva
+        if (perfilData) {
+            if (!localStorage.getItem('usuarioData')) {
+                const hoje = new Date();
+                const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                const dataAtual = `${meses[hoje.getMonth()]} de ${hoje.getFullYear()}`;
+                localStorage.setItem('usuarioData', dataAtual);
+            }
+            perfilData.textContent = localStorage.getItem('usuarioData');
+        }
+
+        // Ação do botão "Editar Dados"
+        if (btnEditarDados) {
+            btnEditarDados.addEventListener('click', function() {
+                const novoNome = prompt('Digite seu nome:', perfilNome.textContent);
+                const novoTelefone = prompt('Digite seu telefone:', perfilTelefone.textContent);
+                const novaCidade = prompt('Digite sua cidade/estado:', perfilCidade.textContent);
+
+                if (novoNome && novoNome.trim() !== '') {
+                    localStorage.setItem('usuarioNome', novoNome);
+                    perfilNome.textContent = novoNome;
+                }
+                if (novoTelefone && novoTelefone.trim() !== '') {
+                    localStorage.setItem('usuarioTelefone', novoTelefone);
+                    perfilTelefone.textContent = novoTelefone;
+                }
+                if (novaCidade && novaCidade.trim() !== '') {
+                    localStorage.setItem('usuarioCidade', novaCidade);
+                    perfilCidade.textContent = novaCidade;
+                }
+            });
+        }
     }
 
     // ==========================================
-    // 3. LÓGICA DA BARRA DE BUSCA
+    // 3. BARRA DE BUSCA
     // ==========================================
     const inputBusca = document.getElementById('inputBusca');
 
@@ -115,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // ==========================================
-    // 4. LÓGICA DO MODAL QR CODE
+    // 4. MODAL QR CODE
     // ==========================================
     const modal = document.getElementById('modalQrCode');
     const fecharModal = document.getElementById('fecharModal');
