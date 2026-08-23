@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPromo - Minha Conta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="painel-body">
+
+    <!-- Barra de utilidades superior -->
+    <div class="top-bar">
+        <a href="#">Suporte</a> |
+        <a href="#">🌐 Português (BR)</a> |
+        <a href="index.html">👤 Sair</a>
+    </div>
+
+    <!-- Menu Principal (Cápsula) -->
+    <nav class="main-menu">
+        <a href="inicio.html" class="logo">
+            <span class="v-logo">V.</span><span class="eco">Eco</span><span class="promo">Promo</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
+            <li><a href="cupons.html">Cupons</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="search-box">
+                <input type="text" id="inputBusca" placeholder="Buscar produto...">
+                <span>🔍</span>
+            </div>
+            <!-- O botão agora está ativo para mostrar que estamos nesta página -->
+            <a href="perfil.html" class="btn-cta" style="background-color: #000; color: #fff;">Minha Conta ❯</a>
+        </div>
+    </nav>
+
+    <!-- Conteúdo da Página de Perfil -->
+    <main class="conteudo-painel">
+        <div class="cabecalho-pagina">
+            <h2>Meu Perfil</h2>
+            <p>Gerencie seus dados e acompanhe sua economia na plataforma.</p>
+        </div>
+
+        <div class="perfil-container" style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+            
+            <!-- Cartão de Informações do Usuário -->
+            <div class="card-produto" style="flex: 1; min-width: 300px; padding: 30px; text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 15px;">👤</div>
+                <h3 id="perfilNome" style="font-size: 24px; margin-bottom: 5px;">João Silva</h3>
+    <p id="perfilEmail" style="color: #666; margin-bottom: 20px;">joao.silva@email.com</p>
+                <hr style="border: 1px solid #eee; margin-bottom: 20px;">
+                <div style="text-align: left;">
+                    <p><strong>Membro desde:</strong> Janeiro de 2024</p>
+                    <p><strong>Telefone:</strong> (11) 98765-4321</p>
+                    <p><strong>Cidade:</strong> São Paulo, SP</p>
+                </div>
+                <button class="btn-pegar-cupom" style="margin-top: 25px; width: 100%;">Editar Dados</button>
+            </div>
+
+            <!-- Cartão de Estatísticas -->
+            <div class="card-produto" style="flex: 2; min-width: 300px; padding: 30px;">
+                <h3 style="font-size: 22px; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">Minhas Estatísticas</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;">
+                    <div style="background-color: #f1f8ff; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #cce5ff;">
+                        <h4 style="color: #0056b3; font-size: 16px;">Cupons Resgatados</h4>
+                        <span style="font-size: 32px; font-weight: bold; color: #0056b3;">24</span>
+                    </div>
+                    
+                    <div style="background-color: #e8f5e9; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #c8e6c9;">
+                        <h4 style="color: #28a745; font-size: 16px;">Total Economizado</h4>
+                        <span style="font-size: 32px; font-weight: bold; color: #28a745;">R$ 315,50</span>
+                    </div>
+
+                    <div style="background-color: #fff3cd; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #ffeeba;">
+                        <h4 style="color: #856404; font-size: 16px;">Produtos Salvos</h4>
+                        <span style="font-size: 32px; font-weight: bold; color: #856404;">15 kg</span>
+                    </div>
+                </div>
+
+                <p style="margin-top: 25px; color: #666; font-size: 14px; line-height: 1.5;">
+                    * A métrica de <strong>Produtos Salvos</strong> estima a quantidade de comida próxima do vencimento que você ajudou a evitar que fosse desperdiçada. Parabéns por contribuir com um mundo mais sustentável! 🌍
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+     <script src="script.js"></script>
+</body>
+</html>

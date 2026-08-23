@@ -385,3 +385,289 @@ body.painel-body {
 .btn-ver-ofertas:hover {
     background-color: #218838;
 }
+
+/* =========================================
+   PÁGINA DE PRODUTOS
+========================================= */
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card-produto {
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative; /* Necessário para posicionar o badge de desconto */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Selo de desconto no canto superior direito */
+.badge-desconto {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #dc3545; /* Vermelho chamativo */
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Espaço reservado para a foto do produto (usando emoji por enquanto) */
+.imagem-produto {
+    background-color: #f4f7f6;
+    height: 120px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.card-produto h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.loja-vendedora {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.area-preco {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Empurra o botão para baixo */
+}
+
+.preco-antigo {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 14px;
+}
+
+.preco-novo {
+    color: #28a745; /* Verde Promo */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botão de resgate */
+.btn-pegar-cupom {
+    display: block;
+    background-color: #0056b3; /* Azul Eco */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-pegar-cupom:hover {
+    background-color: #004494;
+}
+/* Preço de produtos sem desconto */
+.preco-normal-destaque {
+    color: #333;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: auto; /* Empurra o preço para baixo para alinhar com os outros */
+}
+
+/* Botão inativo para produtos sem cupom */
+.btn-sem-cupom {
+    display: block;
+    background-color: #e8e8e8; /* Cinza claro */
+    color: #888;
+    text-align: center;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    width: 100%;
+    cursor: not-allowed; /* Mostra o cursor de bloqueado */
+}
+/* Estilo para as imagens reais dos produtos */
+.img-produto-real {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f4f7f6; /* Fundo cinza enquanto a imagem não carrega */
+}
+
+/* =========================================
+   PÁGINA DE CUPONS (CARTEIRA)
+========================================= */
+.grid-cupons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.card-cupom {
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Cabeçalho do Cupom com linha tracejada */
+.cupom-header {
+    background-color: #f7f9fc;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #ccc; /* Efeito de picote de papel */
+    font-size: 13px;
+    font-weight: bold;
+    color: #555;
+}
+
+.validade {
+    color: #dc3545; /* Vermelho para chamar atenção para a data */
+}
+
+/* Corpo do Cupom */
+.cupom-body {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cupom-body img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f4f7f6;
+}
+
+.cupom-info h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.desconto-destaque {
+    color: #28a745; /* Verde Promo */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Rodapé com Código e Botão */
+.cupom-footer {
+    padding: 0 20px 20px;
+}
+
+.codigo-box {
+    background-color: #f1f8ff;
+    color: #0056b3;
+    border: 1px dashed #0056b3;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.btn-usar-cupom {
+    display: block;
+    width: 100%;
+    background-color: #1c3e66;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-usar-cupom:hover {
+    background-color: #000;
+}
+
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: popup 0.25s ease-out;
+}
+
+.btn-fechar {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.btn-fechar:hover { color: #000; }
+
+.qr-code-area img {
+    width: 180px;
+    height: 180px;
+    margin: 15px 0;
+    border: 2px solid #eee;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.codigo-destaque {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #0056b3;
+    background: #eef6ff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 1px dashed #0056b3;
+}
+
+@keyframes popup {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

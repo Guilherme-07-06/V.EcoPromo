@@ -3,335 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Cupons EcoPromo</title>
-    <style>
-        /* Estilos Globais e Reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-        }
-
-        body {
-            background-color: #f7f9fc;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        /* Barra Superior (Cabeçalho) */
-        .header {
-            background-color: #fff;
-            border-bottom: 1px solid #e1e8ed;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 22px;
-            color: #1c3e66;
-            text-decoration: none;
-        }
-
-        .logo-v {
-            font-weight: bold;
-            color: #0056b3;
-            margin-right: 5px;
-            font-size: 26px;
-        }
-
-        .user-nav {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #ccc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .name {
-            font-size: 14px;
-        }
-
-        .settings-icon {
-            font-size: 18px;
-            color: #5c6c7b;
-            cursor: pointer;
-        }
-
-        /* Navegação de Página */
-        .page-nav {
-            background-color: #fff;
-            display: flex;
-            padding: 0 30px;
-            border-bottom: 1px solid #e1e8ed;
-        }
-
-        .tab {
-            padding: 15px 20px;
-            text-decoration: none;
-            color: #5c6c7b;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab:hover, .tab.active {
-            color: #0056b3;
-            border-bottom: 3px solid #0056b3;
-        }
-
-        .tab-icon {
-            font-size: 16px;
-        }
-
-        /* Layout Principal (Sidebar e Conteúdo) */
-        .main-layout {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        /* Barra Lateral (Sidebar) */
-        .sidebar {
-            width: 220px;
-            background-color: #fff;
-            border-right: 1px solid #e1e8ed;
-            padding-top: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-icon {
-            font-size: 20px;
-            color: #5c6c7b;
-            padding: 0 20px 20px;
-            cursor: pointer;
-        }
-
-        .sidebar-link {
-            padding: 12px 20px;
-            text-decoration: none;
-            color: #5c6c7b;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sidebar-link:hover, .sidebar-link.active {
-            background-color: #eaf2ff;
-            color: #0056b3;
-        }
-
-        .sidebar-icon {
-            font-size: 16px;
-        }
-
-        /* Área de Conteúdo Principal */
-        .content {
-            flex: 1;
-            padding: 40px;
-            overflow-y: auto;
-        }
-
-        .content-title {
-            font-size: 24px;
-            margin-bottom: 30px;
-        }
-
-        /* Grade de Cartões de Cupom */
-        .coupon-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        /* Cartão de Cupom */
-        .coupon-card {
-            background-color: #fff;
-            border: 1px solid #e1e8ed;
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-title {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .action-icons {
-            display: flex;
-            gap: 10px;
-            font-size: 16px;
-            color: #5c6c7b;
-        }
-
-        .trash { color: #d9534f; cursor: pointer; }
-        .pencil { color: #5c6c7b; cursor: pointer; }
-        .eye { color: #5c6c7b; cursor: pointer; }
-
-        .card-body {
-            display: flex;
-            gap: 20px;
-            align-items: start;
-        }
-
-        .image-placeholder {
-            width: 100px;
-            height: 100px;
-            background-color: #e1e8ed;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            color: #999;
-        }
-
-        .details {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            font-size: 14px;
-        }
-
-        .off-text {
-            font-size: 22px;
-            font-weight: bold;
-            color: #d9534f;
-        }
-
-        .code, .valid {
-            color: #5c6c7b;
-        }
-
-        .card-footer {
-            margin-top: auto;
-        }
-
-        .details-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-            text-decoration: none;
-            border: 1px solid #e1e8ed;
-            border-radius: 5px;
-            color: #0056b3;
-            font-size: 14px;
-            background-color: #fff;
-        }
-
-        .details-button:hover {
-            background-color: #f7f9fc;
-        }
-
-    </style>
+    <title>EcoPromo - Meus Cupons</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="painel-body">
 
-    <!-- Barra Superior -->
-    <header class="header">
-        <a href="#" class="logo">
-            <span class="logo-v">V</span>EcoPromo
-        </a>
-        <div class="user-nav">
-            <span class="name">Olá, Getulio | MartMinas</span>
-            <div class="avatar">[A]</div>
-            <span class="settings-icon">&#9881;</span> <!-- Símbolo de Engrenagem -->
-        </div>
-    </header>
-
-    <!-- Navegação de Página -->
-    <nav class="page-nav">
-        <a href="#" class="tab"><span class="tab-icon">[📦]</span>PRODUTOS</a>
-        <a href="#" class="tab"><span class="tab-icon">[🏷️]</span>PROMOÇÕES DO DIA</a>
-        <a href="#" class="tab"><span class="tab-icon">[🏬]</span>ESTABELECIMENTOS</a>
-        <a href="#" class="tab active"><span class="tab-icon">[🎫]</span>CUPONS PROMOCIONAIS</a>
-    </nav>
-
-    <!-- Layout Principal -->
-    <div class="main-layout">
-        
-        <!-- Barra Lateral -->
-        <aside class="sidebar">
-            <span class="menu-icon">&#9776;</span> <!-- Símbolo de Hambúrguer -->
-            <a href="#" class="sidebar-link active"><span class="sidebar-icon">[📊]</span>Dashboard</a>
-            <a href="#" class="sidebar-link"><span class="sidebar-icon">[➕]</span>Cadastro Rápido</a>
-            <a href="#" class="sidebar-link"><span class="sidebar-icon">[📋]</span>Relatórios</a>
-            <a href="#" class="sidebar-link"><span class="sidebar-icon">[⚙️]</span>Configurações</a>
-        </aside>
-
-        <!-- Área de Conteúdo -->
-        <main class="content">
-            <h1 class="content-title">Meus Cupons Promocionais (Exemplos)</h1>
-
-            <!-- Grade de Cupons (Exemplos) -->
-            <div class="coupon-grid">
-                
-                <!-- Exemplo de Cartão 1 -->
-                <div class="coupon-card">
-                    <div class="card-header">
-                        <span class="card-title">Desconto em Orgânicos</span>
-                        <div class="action-icons">
-                            <span class="eye">[O]</span>
-                            <span class="pencil">[L]</span>
-                            <span class="trash">[X]</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="image-placeholder">IMAGEM [V]</div>
-                        <div class="details">
-                            <span class="off-text">20% OFF</span>
-                            <span class="code">Código: <strong>ORGANICO20</strong></span>
-                            <span class="valid">Válido até 15/11/2024</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="details-button">Ver Detalhes</a>
-                    </div>
-                </div>
-
-                <!-- Repita para mais cartões... Copiarei a estrutura para 6 cartões idênticos em layout -->
-                <div class="coupon-card"><div class="card-header"><span class="card-title">Exemplo</span><div class="action-icons"><span class="eye">[O]</span><span class="pencil">[L]</span><span class="trash">[X]</span></div></div><div class="card-body"><div class="image-placeholder">IMAGEM [L]</div><div class="details"><span class="off-text">R$ 15 de Desconto</span><span class="code">Código: ECOCLEAN15</span><span class="valid">30/11/2024</span></div></div><div class="card-footer"><a href="#" class="details-button">Ver Detalhes</a></div></div>
-                <div class="coupon-card"><div class="card-header"><span class="card-title">Exemplo</span><div class="action-icons"><span class="eye">[O]</span><span class="pencil">[L]</span><span class="trash">[X]</span></div></div><div class="card-body"><div class="image-placeholder">IMAGEM [H]</div><div class="details"><span class="off-text">Compre 3 pague 2</span><span class="code">Código: FRUTA3P2</span><span class="valid">10/11/2024</span></div></div><div class="card-footer"><a href="#" class="details-button">Ver Detalhes</a></div></div>
-                <div class="coupon-card"><div class="card-header"><span class="card-title">Exemplo</span><div class="action-icons"><span class="eye">[O]</span><span class="pencil">[L]</span><span class="trash">[X]</span></div></div><div class="card-body"><div class="image-placeholder">IMAGEM [H]</div><div class="details"><span class="off-text">R$ 10 OFF</span><span class="code">Código: HIGIENE50</span><span class="valid">25/11/2024</span></div></div><div class="card-footer"><a href="#" class="details-button">Ver Detalhes</a></div></div>
-                <div class="coupon-card"><div class="card-header"><span class="card-title">Exemplo</span><div class="action-icons"><span class="eye">[O]</span><span class="pencil">[L]</span><span class="trash">[X]</span></div></div><div class="card-body"><div class="image-placeholder">IMAGEM [M]</div><div class="details"><span class="off-text">15% de volta</span><span class="code">Código: SILVACASH15</span><span class="valid">20/11/2024</span></div></div><div class="card-footer"><a href="#" class="details-button">Ver Detalhes</a></div></div>
-                <div class="coupon-card"><div class="card-header"><span class="card-title">Exemplo</span><div class="action-icons"><span class="eye">[O]</span><span class="pencil">[L]</span><span class="trash">[X]</span></div></div><div class="card-body"><div class="image-placeholder">IMAGEM [S]</div><div class="details"><span class="off-text">R$ 5 imediato</span><span class="code">Código: SACOLA5</span><span class="valid">Ação Permanente</span></div></div><div class="card-footer"><a href="#" class="details-button">Ver Detalhes</a></div></div>
-
-            </div>
-        </main>
+    <!-- Barra de utilidades superior -->
+    <div class="top-bar">
+        <a href="#">Suporte</a> |
+        <a href="#">🌐 Português (BR)</a> |
+        <a href="index.html">👤 Sair</a>
     </div>
 
+    <!-- Menu Principal (Cápsula) -->
+    <nav class="main-menu">
+        <a href="inicio.html" class="logo">
+            <span class="v-logo">V.</span><span class="eco">Eco</span><span class="promo">Promo</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
+            <li><a href="cupons.html" class="active">Cupons</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="search-box">
+                <input type="text" id="inputBusca" placeholder="Buscar produto...">
+                <span>🔍</span>
+            </div>
+            <a href="perfil.html" class="btn-cta">Minha Conta ❯</a>
+        </div>
+    </nav>
+
+    <!-- Conteúdo da Página de Cupons -->
+    <main class="conteudo-painel">
+        <div class="cabecalho-pagina">
+            <h2>Carteira de Cupons</h2>
+            <p>Apresente o código ou QR Code no caixa da loja parceira para garantir seu desconto.</p>
+        </div>
+
+        <div class="grid-cupons">
+            <!-- Cupom 1 -->
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">🏪 Mercado ValeBom</span>
+                    <span class="validade">Válido até 30/08</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/Arroz.jpg" alt="Arroz Branco">
+                    <div class="cupom-info">
+                        <h3>Arroz Branco 5kg</h3>
+                        <p class="desconto-destaque">40% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">VALEBOM40</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">🏪 Mercado ValeBom</span>
+                    <span class="validade">Válido até 30/08</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/Cafe.jpg" alt="Café Três Corações">
+                    <div class="cupom-info">
+                        <h3>Café Três Corações 500g</h3>
+                        <p class="desconto-destaque">30% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">CAFE30</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">🏪 Mercado ValeBom</span>
+                    <span class="validade">Válido até 30/08</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/sabao.webp" alt="Sabão em Pó">
+                    <div class="cupom-info">
+                        <h3>Sabão em Pó 1kg</h3>
+                        <p class="desconto-destaque">25% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">SABAO25</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <!-- ========================================= -->
+            <!-- CUPONS: FARMA SAÚDE                       -->
+            <!-- ========================================= -->
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">💊 Farma Saúde</span>
+                    <span class="validade">Válido até 05/09</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/Vitamina.webp" alt="Vitamina C">
+                    <div class="cupom-info">
+                        <h3>Vitamina C 1g</h3>
+                        <p class="desconto-destaque">35% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">VITAMINA35</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">💊 Farma Saúde</span>
+                    <span class="validade">Válido até 05/09</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/Shampoo.webp" alt="Shampoo Anticaspa">
+                    <div class="cupom-info">
+                        <h3>Shampoo Anticaspa</h3>
+                        <p class="desconto-destaque">20% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">FARMA20</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <!-- ========================================= -->
+            <!-- CUPONS: PÃO QUENTINHO                     -->
+            <!-- ========================================= -->
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">🍞 Pão Quentinho</span>
+                    <span class="validade">Válido até Hoje</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/Bolo.jpg" alt="Bolo de Chocolate">
+                    <div class="cupom-info">
+                        <h3>Bolo de Chocolate</h3>
+                        <p class="desconto-destaque">30% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">BOLO30</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">🍞 Pão Quentinho</span>
+                    <span class="validade">Válido até Hoje</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/Rocambole.webp" alt="Rocambole">
+                    <div class="cupom-info">
+                        <h3>Rocambole</h3>
+                        <p class="desconto-destaque">40% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">DOCE40</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">🍞 Pão Quentinho</span>
+                    <span class="validade">Válido até Hoje</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/suco.jpg" alt="Suco de Laranja">
+                    <div class="cupom-info">
+                        <h3>Suco Laranja 450ml</h3>
+                        <p class="desconto-destaque">25% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">SUCO25</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+
+            <div class="card-cupom">
+                <div class="cupom-header">
+                    <span class="loja">🍞 Pão Quentinho</span>
+                    <span class="validade">Válido até Hoje</span>
+                </div>
+                <div class="cupom-body">
+                    <img src="imagens/Biscoito.png" alt="Biscoito de Polvilho">
+                    <div class="cupom-info">
+                        <h3>Biscoito Polvilho</h3>
+                        <p class="desconto-destaque">20% OFF</p>
+                    </div>
+                </div>
+                <div class="cupom-footer">
+                    <div class="codigo-box">BISCOITO20</div>
+                    <button class="btn-usar-cupom">Mostrar QR Code</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+     <div id="modalQrCode" class="modal-container">
+        <div class="modal-content">
+            <span class="btn-fechar" id="fecharModal">&times;</span>
+            <h3 id="modalTitulo">Nome do Produto</h3>
+            <p id="modalLoja" style="color: #666; margin-top: 5px;">Loja</p>
+            
+            <div class="qr-code-area">
+                <img id="modalImgQr" src="" alt="QR Code do Cupom">
+            </div>
+            
+            <p style="font-size: 13px; color: #555;">Apresente o código abaixo no caixa:</p>
+            <div class="codigo-destaque" id="modalCodigo">CÓDIGO</div>
+        </div>
+    </div>
+     <script src="script.js"></script>
+    
 </body>
 </html>
