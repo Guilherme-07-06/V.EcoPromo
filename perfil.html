@@ -5,38 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoPromo - Minha Conta</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="painel-body">
 
-    <!-- Barra de utilidades superior -->
     <div class="top-bar">
-        <a href="#">Suporte</a> |
+        <a href="suporte.html">Suporte</a> |
         <a href="#">🌐 Português (BR)</a> |
         <a href="index.html">👤 Sair</a>
     </div>
 
-    <!-- Menu Principal (Cápsula) -->
     <nav class="main-menu">
         <a href="inicio.html" class="logo">
             <span class="v-logo">V.</span><span class="eco">Eco</span><span class="promo">Promo</span>
         </a>
-        <ul class="nav-links">
-            <li><a href="inicio.html">Início</a></li>
-            <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
-            <li><a href="cupons.html">Cupons</a></li>
-        </ul>
+     <ul class="nav-links">
+    <li><a href="inicio.html">Produtos</a></li>
+    <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
+    <li><a href="cupons.html">Cupons</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    </ul>
         <div class="nav-actions">
             <div class="search-box">
                 <input type="text" id="inputBusca" placeholder="Buscar produto...">
                 <span>🔍</span>
             </div>
-            <!-- O botão agora está ativo para mostrar que estamos nesta página -->
+    
             <a href="perfil.html" class="btn-cta" style="background-color: #000; color: #fff;">Minha Conta ❯</a>
         </div>
     </nav>
 
-    <!-- Conteúdo da Página de Perfil -->
     <main class="conteudo-painel">
         <div class="cabecalho-pagina">
             <h2>Meu Perfil</h2>
@@ -45,7 +43,6 @@
 
         <div class="perfil-container" style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
             
-            <!-- Cartão de Informações do Usuário -->
             <div class="card-produto" style="flex: 1; min-width: 300px; padding: 30px; text-align: center;">
                 <div style="font-size: 60px; margin-bottom: 15px;">👤</div>
                 <h3 id="perfilNome" style="font-size: 24px; margin-bottom: 5px;">João Silva</h3>
@@ -60,7 +57,6 @@
 <button id="btnEditarDados" class="btn-editar">Editar Dados</button>
             </div>
 
-            <!-- Cartão de Estatísticas -->
             <div class="card-produto" style="flex: 2; min-width: 300px; padding: 30px;">
                 <h3 style="font-size: 22px; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">Minhas Estatísticas</h3>
                 

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoPromo - Início</title>
+    <title>EcoPromo - Produtos em Oferta</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body class="painel-body">
 
     <div class="top-bar">
-        <a href="#">Suporte</a> |
+        <a href="suporte.html">Suporte</a> |
         <a href="#">🌐 Português (BR)</a> |
         <a href="index.html">👤 Sair</a>
     </div>
@@ -19,90 +19,162 @@
         <a href="inicio.html" class="logo">
             <span class="v-logo">V.</span><span class="eco">Eco</span><span class="promo">Promo</span>
         </a>
-
-        <!-- Suas Abas de Navegação -->
-        <ul class="nav-links">
-            <li><a href="inicio.html" class="active">Início</a></li>
-            <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
-            <li><a href="cupons.html">Cupons</a></li>
+            <ul class="nav-links">
+        <li><a href="inicio.html" class="active">Produtos</a></li>
+        <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
+        <li><a href="cupons.html">Cupons</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
         </ul>
 
-        <!-- Barra de Busca e Botão de Ação -->
         <div class="nav-actions">
             <div class="search-box">
                 <input type="text" id="inputBusca" placeholder="Buscar produto...">
                 <span>🔍</span>
             </div>
-             <a href="perfil.html" class="btn-cta">Minha Conta ❯</a>
+            <a href="perfil.html" class="btn-cta">Minha Conta ❯</a>
         </div>
     </nav>
 
-    <!-- Área onde você colocará o conteúdo sobre como o site funciona -->
-    <main class="conteudo-inicio">
-        <!-- Seção: Quem Somos -->
-        <section class="sobre-nos">
-            <h2>Quem Somos</h2>
-            <p>O <strong>EcoPromo</strong> é o seu novo hub central de descontos e oportunidades imperdíveis. Nascemos com a missão de transformar a sua forma de consumir, conectando diretamente você às melhores promoções do comércio local — desde supermercados e padarias até farmácias e lojas de conveniência.</p>
-            
-            <p>Nossa plataforma funciona como uma grande vitrine inteligente: os estabelecimentos parceiros se cadastram e anunciam produtos que estão em oferta especial ou estoques que precisam ser movimentados rapidamente. Do outro lado, você acessa o site, encontra os descontos que mais combinam com a sua rotina e gera um cupom exclusivo para resgatar direto na loja física.</p>
-            
-            <p>Acreditamos em um modelo onde todo mundo sai ganhando. O varejista atrai fluxo para sua loja e gira seu estoque de forma eficiente, enquanto você ganha praticidade e economia real no fim do mês, concentrando as melhores ofertas da cidade em um único lugar. Tudo isso de forma 100% gratuita!</p>
-        </section>
+    <main class="conteudo-painel">
+        <div class="cabecalho-pagina">
+            <h2>Ofertas </h2>
+            <p>Aproveite os produtos e os descontos antes que o estoque acabe!</p>
+        </div>
 
-        <hr class="divisor">
-
-        <!-- Seção: Como Fazemos a Diferença -->
-        <section class="como-funciona">
-            <h2>Como Funciona a Magia</h2>
-            <ul>
-                <li><strong>🏪 Variedade de Parceiros:</strong> Fechamos parcerias com mercados, farmácias, padarias e diversos comércios do seu bairro.</li>
-                <li><strong>⚡ Ofertas Relâmpago:</strong> Lojistas utilizam a plataforma para anunciar promoções agressivas e queimas de estoque rápido.</li>
-                <li><strong>🎟️ Resgate Descomplicado:</strong> Você escolhe o produto, gera o cupom gratuitamente no site e apresenta no caixa da loja parceira.</li>
-            </ul>
-        </section>
-
-        <hr class="divisor">
-
-        <!-- Seção: Nossos Valores -->
-        <section class="valores">
-            <h2>Nossos Valores</h2>
-            <ul>
-                <li><strong>🤝 Economia Colaborativa:</strong> Construímos um sistema onde tanto o consumidor quanto o lojista saem ganhando.</li>
-                <li><strong>📍 Fortalecimento Local:</strong> Incentivamos e movimentamos o comércio da sua própria região.</li>
-                <li><strong>🔍 Transparência Total:</strong> Regras claras e informações precisas para você usar seus cupons sem dor de cabeça.</li>
-            </ul>
-        </section>
-
-        <hr class="divisor">
-
-        <!-- Seção: Vantagens (Cards) -->
-        <section class="vantagens">
-            <h2>Por que usar o EcoPromo?</h2>
-            <div class="cards-vantagens">
-                <div class="card">
-                    <h3>💰 Economia de Verdade</h3>
-                    <p>Descontos expressivos para aliviar o bolso nas suas compras do dia a dia.</p>
-                </div>
-                <div class="card">
-                    <h3>🏪 Diversidade de Lojas</h3>
-                    <p>Encontre ofertas de supermercados, farmácias, padarias e muito mais.</p>
-                </div>
-                <div class="card">
-                    <h3>⚡ Ofertas Exclusivas</h3>
-                    <p>Acesso rápido a promoções e queimas de estoque antes de todo mundo.</p>
-                </div>
-                <div class="card">
-                    <h3>🎯 Super Prático</h3>
-                    <p>Chega de procurar em vários lugares. As melhores oportunidades da cidade reunidas aqui.</p>
-                </div>
-                <div class="card">
-                    <h3>🆓 100% Gratuito</h3>
-                    <p>Sem taxas ou pegadinhas. É só gerar o seu cupom e aproveitar a economia.</p>
-                </div>
+    <div class="grid-produtos">
+            <div class="card-produto">
+                <div class="badge-desconto">-40%</div>
+                <img src="imagens/Arroz.jpg" alt="Arroz Branco" class="img-produto-real">
+                <h3>Arroz Branco 5kg</h3>
+                <p class="loja-vendedora">🏪 Mercado ValeBom</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 25,00</span><span class="preco-novo">R$ 15,00</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
-        </section>
+
+            <div class="card-produto">
+                <img src="imagens/Feijao.webp" alt="Feijão Carioca" class="img-produto-real">
+                <h3>Feijão Carioca 1kg</h3>
+                <p class="loja-vendedora">🏪 Mercado ValeBom</p>
+                <div class="area-preco"><span class="preco-normal-destaque">R$ 11,50</span></div>
+                <button class="btn-sem-cupom" disabled>Preço Padrão</button>
+            </div>
+
+            <div class="card-produto">
+                <div class="badge-desconto">-30%</div>
+                <img src="imagens/Cafe.jpg" alt="Café Torrado" class="img-produto-real">
+                <h3>Café Três Corações 500g</h3>
+                <p class="loja-vendedora">🏪 Mercado ValeBom</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 28,00</span><span class="preco-novo">R$ 19,60</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+            <div class="card-produto">
+                <div class="badge-desconto">-25%</div>
+                <img src="imagens/sabao.webp" alt="Sabão em Pó" class="img-produto-real">
+                <h3>Sabão em Pó 1kg</h3>
+                <p class="loja-vendedora">🏪 Mercado ValeBom</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 23,00</span><span class="preco-novo">R$ 17,25</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens/Amaciante.webp" alt="Amaciante 2L" class="img-produto-real">
+                <h3>Amaciante 2L</h3>
+                <p class="loja-vendedora">🏪 Mercado ValeBom</p>
+                <div class="area-preco"><span class="preco-normal-destaque">R$ 11,90</span></div>
+                <button class="btn-sem-cupom" disabled>Preço Padrão</button>
+            </div>
+
+
+            <div class="card-produto">
+                <img src="imagens/Desodorante.webp" alt="Desodorante" class="img-produto-real">
+                <h3>Desodorante Aerosol</h3>
+                <p class="loja-vendedora">💊 Farma Saúde</p>
+                <div class="area-preco"><span class="preco-normal-destaque">R$ 17,99</span></div>
+                <button class="btn-sem-cupom" disabled>Preço Padrão</button>
+            </div>
+            
+            <div class="card-produto">
+                <div class="badge-desconto">-35%</div>
+                <img src="imagens/Vitamina.webp" alt="Vitamina C" class="img-produto-real">
+                <h3>Vitamina C 1g (10 comp)</h3>
+                <p class="loja-vendedora">💊 Farma Saúde</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 20,00</span><span class="preco-novo">R$ 13,00</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+            <div class="card-produto">
+                <div class="badge-desconto">-20%</div>
+                <img src="imagens/Shampoo.webp" alt="Shampoo" class="img-produto-real">
+                <h3>Shampoo Anticaspa</h3>
+                <p class="loja-vendedora">💊 Farma Saúde</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 29,00</span><span class="preco-novo">R$ 23,20</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens/Sabonete.webp" alt="Sabonete" class="img-produto-real">
+                <h3>Sabonete Líquido 250ml</h3>
+                <p class="loja-vendedora">💊 Farma Saúde</p>
+                <div class="area-preco"><span class="preco-normal-destaque">R$ 10,99</span></div>
+                <button class="btn-sem-cupom" disabled>Preço Padrão</button>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens/Hidratante.webp" alt="Hidratante Corporal" class="img-produto-real">
+                <h3>Hidratante Corporal</h3>
+                <p class="loja-vendedora">💊 Farma Saúde</p>
+                <div class="area-preco"><span class="preco-normal-destaque">R$ 20,00</span></div>
+                <button class="btn-sem-cupom" disabled>Preço Padrão</button>
+            </div>
+
+            <div class="card-produto">
+                <div class="badge-desconto">-30%</div>
+                <img src="imagens/Bolo.jpg" alt="Bolo de Chocolate" class="img-produto-real">
+                <h3>Bolo de Chocolate Inteiro</h3>
+                <p class="loja-vendedora">🍞 Pão Quentinho</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 23,00</span><span class="preco-novo">R$ 16,10</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens/Pao.jpg" alt="Pão Francês" class="img-produto-real">
+                <h3>Pão de Forma 400g</h3>
+                <p class="loja-vendedora">🍞 Pão Quentinho</p>
+                <div class="area-preco"><span class="preco-normal-destaque">R$ 8,90</span></div>
+                <button class="btn-sem-cupom" disabled>Preço Padrão</button>
+            </div>
+
+            <div class="card-produto">
+                <div class="badge-desconto">-40%</div>
+                <img src="imagens/Rocambole.webp" alt="Pão de Queijo" class="img-produto-real">
+                <h3>Rocombole</h3>
+                <p class="loja-vendedora">🍞 Pão Quentinho</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 24,60</span><span class="preco-novo">R$ 14,76</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+            <div class="card-produto">
+                <div class="badge-desconto">-25%</div>
+                <img src="imagens/suco.jpg" alt="Suco Natural" class="img-produto-real">
+                <h3>Suco de Laranja 450ml</h3>
+                <p class="loja-vendedora">🍞 Pão Quentinho</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 7,60</span><span class="preco-novo">R$ 5,70</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+            <div class="card-produto">
+                <div class="badge-desconto">-20%</div>
+                <img src="imagens/Biscoito.png" alt="Biscoito de Polvilho" class="img-produto-real">
+                <h3>Biscoito de Polvilho</h3>
+                <p class="loja-vendedora">🍞 Pão Quentinho</p>
+                <div class="area-preco"><span class="preco-antigo">R$ 8,00</span><span class="preco-novo">R$ 6,40</span></div>
+                <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
+            </div>
+
+        </div>
     </main>
- <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>

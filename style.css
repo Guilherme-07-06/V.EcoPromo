@@ -128,8 +128,6 @@ body.painel-body {
     background-color: #ffffff;
     padding: 15px 40px;
 }
-
-/* Barra Superior Menor */
 .top-bar {
     display: flex;
     justify-content: flex-end;
@@ -147,17 +145,16 @@ body.painel-body {
 }
 
 .top-bar a:hover {
-    color: #0056b3; /* Azul Eco */
+    color: #0056b3; 
 }
 
-/* Menu Principal (A Cápsula Cinza) */
 .main-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #e8e8e8; /* Cinza claro idêntico à referência */
+    background-color: #e8e8e8; 
     padding: 12px 30px;
-    border-radius: 50px; /* Deixa as bordas bem arredondadas */
+    border-radius: 50px; 
 }
 
 .main-menu .logo {
@@ -167,7 +164,6 @@ body.painel-body {
     margin-right: 20px;
 }
 
-/* Links do Menu */
 .nav-links {
     display: flex;
     list-style: none;
@@ -190,7 +186,6 @@ body.painel-body {
     text-decoration: underline;
 }
 
-/* Área de Busca e Botão Preto */
 .nav-actions {
     display: flex;
     align-items: center;
@@ -235,9 +230,6 @@ body.painel-body {
     padding: 20px;
 }
 
-/* =========================================
-   CONTEÚDO DA PÁGINA INÍCIO
-========================================= */
 .conteudo-inicio {
     margin-top: 40px;
     padding: 20px;
@@ -249,7 +241,7 @@ body.painel-body {
 }
 
 .conteudo-inicio h2 {
-    color: #1c3e66; /* Azul Escuro */
+    color: #1c3e66; 
     margin-bottom: 15px;
     font-size: 28px;
 }
@@ -268,7 +260,7 @@ body.painel-body {
     background-color: #f7f9fc;
     margin-bottom: 10px;
     padding: 15px;
-    border-left: 4px solid #28a745; /* Linha Verde Promo */
+    border-left: 4px solid #28a745; 
     border-radius: 4px;
 }
 
@@ -278,7 +270,6 @@ body.painel-body {
     margin: 40px 0;
 }
 
-/* Grid de Vantagens */
 .cards-vantagens {
     display: flex;
     flex-wrap: wrap;
@@ -291,20 +282,17 @@ body.painel-body {
     border: 1px solid #e1e8ed;
     border-radius: 8px;
     padding: 20px;
-    flex: 1 1 calc(33.333% - 20px); /* 3 cards por linha */
+    flex: 1 1 calc(33.333% - 20px); 
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     min-width: 250px;
 }
 
 .card h3 {
-    color: #0056b3; /* Azul Eco */
+    color: #0056b3; 
     margin-bottom: 10px;
     font-size: 18px;
 }
 
-/* =========================================
-   PÁGINA DE ESTABELECIMENTOS
-========================================= */
 .conteudo-painel {
     max-width: 1100px;
     margin: 40px auto;
@@ -323,7 +311,6 @@ body.painel-body {
     margin-bottom: 30px;
 }
 
-/* Grid de Lojas */
 .grid-lojas {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -357,7 +344,6 @@ body.painel-body {
     margin-bottom: 20px;
 }
 
-/* Badges (Etiquetas de Categoria) */
 .badge-categoria {
     display: inline-block;
     padding: 6px 12px;
@@ -370,10 +356,10 @@ body.painel-body {
 .farmacia { background-color: #ffebee; color: #b71c1c; }
 .padaria { background-color: #fff3e0; color: #e65100; }
 
-/* Botão de Ver Ofertas */
+
 .btn-ver-ofertas {
     display: block;
-    background-color: #28a745; /* Verde Promo */
+    background-color: #28a745; 
     color: white;
     text-decoration: none;
     padding: 12px;
@@ -386,9 +372,6 @@ body.painel-body {
     background-color: #218838;
 }
 
-/* =========================================
-   PÁGINA DE PRODUTOS
-========================================= */
 .grid-produtos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -400,18 +383,17 @@ body.painel-body {
     border: 1px solid #e1e8ed;
     border-radius: 12px;
     padding: 20px;
-    position: relative; /* Necessário para posicionar o badge de desconto */
+    position: relative; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.04);
     display: flex;
     flex-direction: column;
 }
 
-/* Selo de desconto no canto superior direito */
 .badge-desconto {
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: #dc3545; /* Vermelho chamativo */
+    background-color: #dc3545; 
     color: white;
     font-weight: bold;
     padding: 5px 10px;
@@ -419,7 +401,6 @@ body.painel-body {
     font-size: 14px;
 }
 
-/* Espaço reservado para a foto do produto (usando emoji por enquanto) */
 .imagem-produto {
     background-color: #f4f7f6;
     height: 120px;
@@ -447,7 +428,7 @@ body.painel-body {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    flex-grow: 1; /* Empurra o botão para baixo */
+    flex-grow: 1; 
 }
 
 .preco-antigo {
@@ -457,15 +438,14 @@ body.painel-body {
 }
 
 .preco-novo {
-    color: #28a745; /* Verde Promo */
+    color: #28a745; 
     font-size: 24px;
     font-weight: bold;
 }
 
-/* Botão de resgate */
 .btn-pegar-cupom {
     display: block;
-    background-color: #0056b3; /* Azul Eco */
+    background-color: #0056b3; 
     color: white;
     text-align: center;
     text-decoration: none;
@@ -478,18 +458,17 @@ body.painel-body {
 .btn-pegar-cupom:hover {
     background-color: #004494;
 }
-/* Preço de produtos sem desconto */
+
 .preco-normal-destaque {
     color: #333;
     font-size: 22px;
     font-weight: bold;
-    margin-top: auto; /* Empurra o preço para baixo para alinhar com os outros */
+    margin-top: auto; 
 }
 
-/* Botão inativo para produtos sem cupom */
 .btn-sem-cupom {
     display: block;
-    background-color: #e8e8e8; /* Cinza claro */
+    background-color: #e8e8e8; 
     color: #888;
     text-align: center;
     padding: 12px;
@@ -497,21 +476,19 @@ body.painel-body {
     border-radius: 6px;
     font-weight: bold;
     width: 100%;
-    cursor: not-allowed; /* Mostra o cursor de bloqueado */
+    cursor: not-allowed; 
 }
-/* Estilo para as imagens reais dos produtos */
+
 .img-produto-real {
     width: 100%;
     height: 150px;
-    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+    object-fit: cover; 
     border-radius: 8px;
     margin-bottom: 15px;
-    background-color: #f4f7f6; /* Fundo cinza enquanto a imagem não carrega */
+    background-color: #f4f7f6; 
 }
 
-/* =========================================
-   PÁGINA DE CUPONS (CARTEIRA)
-========================================= */
+
 .grid-cupons {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -528,24 +505,22 @@ body.painel-body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* Cabeçalho do Cupom com linha tracejada */
 .cupom-header {
     background-color: #f7f9fc;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px dashed #ccc; /* Efeito de picote de papel */
+    border-bottom: 2px dashed #ccc; 
     font-size: 13px;
     font-weight: bold;
     color: #555;
 }
 
 .validade {
-    color: #dc3545; /* Vermelho para chamar atenção para a data */
+    color: #dc3545; 
 }
 
-/* Corpo do Cupom */
 .cupom-body {
     padding: 20px;
     display: flex;
@@ -568,12 +543,11 @@ body.painel-body {
 }
 
 .desconto-destaque {
-    color: #28a745; /* Verde Promo */
+    color: #28a745; 
     font-size: 20px;
     font-weight: bold;
 }
 
-/* Rodapé com Código e Botão */
 .cupom-footer {
     padding: 0 20px 20px;
 }
@@ -670,4 +644,99 @@ body.painel-body {
 @keyframes popup {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.form-container input, 
+.form-container textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.form-container textarea {
+    resize: vertical;
+}
+
+.form-container input:focus, 
+.form-container textarea:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+
+    .top-bar {
+        font-size: 12px;
+        text-align: center;
+        padding: 8px 5px;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px;
+    }
+
+    .nav-actions {
+        width: 100%;
+    }
+
+    .btn-cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .grid-produtos, 
+    .grid-cupons,
+    .conteudo-painel {
+        grid-template-columns: 1fr !important;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .card-perfil, 
+    .form-container,
+    .card-produto,
+    .card-cupom {
+        width: 100% !important;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .modal-conteudo {
+        width: 90% !important;
+        padding: 20px 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
 }

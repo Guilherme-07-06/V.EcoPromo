@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // ==========================================
-    // 1. LÓGICA DE LOGIN E CADASTRO
-    // ==========================================
     const telaLogin = document.getElementById('tela-login');
     const telaCadastro = document.getElementById('tela-cadastro');
     const linkCadastro = document.getElementById('link-cadastro');
@@ -49,35 +46,36 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        if (formCadastro) {
+       if (formCadastro) {
             formCadastro.addEventListener('submit', function(evento) {
                 evento.preventDefault();
 
-                const inputs = formCadastro.querySelectorAll('input');
-                let nomeDigitado = "";
-                let emailDigitado = "";
+                // Agora pegamos cada campo cirurgicamente pelo ID dele!
+                const inputNome = document.getElementById('nome-cad');
+                const inputEmail = document.getElementById('email-cad');
+                const inputTel = document.getElementById('cadTelefone');
+                const inputCid = document.getElementById('cadCidade');
 
-                inputs.forEach(input => {
-                    const ph = input.placeholder.toLowerCase();
-                    if (input.type === 'text' || ph.includes('nome')) {
-                        nomeDigitado = input.value;
-                    }
-                    if (input.type === 'email' || ph.includes('email')) {
-                        emailDigitado = input.value;
-                    }
-                });
+                // Salvando no navegador apenas se eles existirem
+                if (inputNome && inputNome.value) {
+                    localStorage.setItem('usuarioNome', inputNome.value);
+                }
+                if (inputEmail && inputEmail.value) {
+                    localStorage.setItem('usuarioEmail', inputEmail.value);
+                }
+                if (inputTel && inputTel.value) {
+                    localStorage.setItem('usuarioTelefone', inputTel.value);
+                }
+                if (inputCid && inputCid.value) {
+                    localStorage.setItem('usuarioCidade', inputCid.value);
+                }
 
-                if (nomeDigitado) localStorage.setItem('usuarioNome', nomeDigitado);
-                if (emailDigitado) localStorage.setItem('usuarioEmail', emailDigitado);
-
+                // Vai para a tela inicial
                 window.location.replace("inicio.html");
             });
         }
     }
 
-    // ==========================================
-    // 2. DADOS DO PERFIL E BOTAO EDITAR
-    // ==========================================
     const perfilNome = document.getElementById('perfilNome');
     const perfilEmail = document.getElementById('perfilEmail');
     const perfilTelefone = document.getElementById('perfilTelefone');
@@ -86,13 +84,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const btnEditarDados = document.getElementById('btnEditarDados');
 
     if (perfilNome && perfilEmail) {
-        // Carrega dados do perfil salvos
+
         perfilNome.textContent = localStorage.getItem('usuarioNome') || 'Usuário';
         perfilEmail.textContent = localStorage.getItem('usuarioEmail') || 'usuario@email.com';
         if (perfilTelefone) perfilTelefone.textContent = localStorage.getItem('usuarioTelefone') || '(11) 98765-4321';
         if (perfilCidade) perfilCidade.textContent = localStorage.getItem('usuarioCidade') || 'São Paulo, SP';
 
-        // Registra o mês/ano atual se ainda não houver data salva
         if (perfilData) {
             if (!localStorage.getItem('usuarioData')) {
                 const hoje = new Date();
@@ -103,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
             perfilData.textContent = localStorage.getItem('usuarioData');
         }
 
-        // Ação do botão "Editar Dados"
         if (btnEditarDados) {
             btnEditarDados.addEventListener('click', function() {
                 const novoNome = prompt('Digite seu nome:', perfilNome.textContent);
@@ -126,9 +122,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // ==========================================
-    // 3. BARRA DE BUSCA
-    // ==========================================
     const inputBusca = document.getElementById('inputBusca');
 
     if (inputBusca) {
@@ -148,9 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // ==========================================
-    // 4. MODAL QR CODE
-    // ==========================================
     const modal = document.getElementById('modalQrCode');
     const fecharModal = document.getElementById('fecharModal');
     const btnsQrCode = document.querySelectorAll('.btn-usar-cupom');
@@ -183,6 +173,25 @@ document.addEventListener("DOMContentLoaded", function() {
             if (e.target === modal) {
                 modal.style.display = 'none';
             }
+        });
+    }
+
+    const formSuporte = document.getElementById('formSuporte');
+
+    if (formSuporte) {
+        const supNome = document.getElementById('supNome');
+        const supEmail = document.getElementById('supEmail');
+        
+        if (localStorage.getItem('usuarioNome')) supNome.value = localStorage.getItem('usuarioNome');
+        if (localStorage.getItem('usuarioEmail')) supEmail.value = localStorage.getItem('usuarioEmail');
+
+        formSuporte.addEventListener('submit', function(evento) {
+            evento.preventDefault(); 
+        
+            alert('Sua mensagem foi enviada com sucesso! Nossa equipe entrará em contato em breve.');
+
+            document.getElementById('supAssunto').value = '';
+            document.getElementById('supMensagem').value = '';
         });
     }
 });

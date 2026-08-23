@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPromo - Suporte</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="painel-body">
+
+    <div class="top-bar">
+        <a href="suporte.html">Suporte</a> |
+        <a href="#">🌐 Português (BR)</a> |
+        <a href="index.html">👤 Sair</a>
+    </div>
+
+    <nav class="main-menu">
+        <a href="inicio.html" class="logo">
+            <span class="v-logo">V.</span><span class="eco">Eco</span><span class="promo">Promo</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="inicio.html">Produtos</a></li>
+            <li><a href="estabelecimentos.html">Estabelecimentos</a></li>
+            <li><a href="cupons.html">Cupons</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="perfil.html" class="btn-cta">Minha Conta ❯</a>
+        </div>
+    </nav>
+
+    <main class="conteudo-painel">
+        <div class="cabecalho-pagina">
+            <h2>Suporte e Ajuda</h2>
+            <p>Como podemos ajudar você hoje? Envie sua dúvida, sugestão ou relato de problema.</p>
+        </div>
+
+        <div class="form-container">
+            <form id="formSuporte">
+                <input type="text" id="supNome" placeholder="Seu Nome Completo" required>
+                <input type="email" id="supEmail" placeholder="Seu E-mail" required>
+                <input type="text" id="supAssunto" placeholder="Assunto (Ex: Problema com cupom)" required>
+                <textarea id="supMensagem" placeholder="Escreva sua mensagem aqui detalhadamente..." rows="6" required></textarea>
+                <button type="submit" class="btn-cta" style="width: 100%; border: none; cursor: pointer;">Enviar Mensagem</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
