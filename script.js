@@ -50,13 +50,11 @@ document.addEventListener("DOMContentLoaded", function() {
             formCadastro.addEventListener('submit', function(evento) {
                 evento.preventDefault();
 
-                // Agora pegamos cada campo cirurgicamente pelo ID dele!
                 const inputNome = document.getElementById('nome-cad');
                 const inputEmail = document.getElementById('email-cad');
                 const inputTel = document.getElementById('cadTelefone');
                 const inputCid = document.getElementById('cadCidade');
 
-                // Salvando no navegador apenas se eles existirem
                 if (inputNome && inputNome.value) {
                     localStorage.setItem('usuarioNome', inputNome.value);
                 }
@@ -70,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     localStorage.setItem('usuarioCidade', inputCid.value);
                 }
 
-                // Vai para a tela inicial
                 window.location.replace("inicio.html");
             });
         }
@@ -84,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const btnEditarDados = document.getElementById('btnEditarDados');
 
     if (perfilNome && perfilEmail) {
-
         perfilNome.textContent = localStorage.getItem('usuarioNome') || 'Usuário';
         perfilEmail.textContent = localStorage.getItem('usuarioEmail') || 'usuario@email.com';
         if (perfilTelefone) perfilTelefone.textContent = localStorage.getItem('usuarioTelefone') || '(11) 98765-4321';
@@ -123,15 +119,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const inputBusca = document.getElementById('inputBusca');
-
     if (inputBusca) {
         inputBusca.addEventListener('input', function() {
             const termoDigitado = inputBusca.value.toLowerCase().trim();
-            const cartoes = document.querySelectorAll('.card-produto, .card-cupom');
+            const cartoes = document.querySelectorAll('.card-produto, .card-cupom, .card-loja');
 
             cartoes.forEach(cartao => {
                 const textoCartao = cartao.textContent.toLowerCase();
-                
                 if (textoCartao.includes(termoDigitado)) {
                     cartao.style.display = ''; 
                 } else {
@@ -177,7 +171,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const formSuporte = document.getElementById('formSuporte');
-
     if (formSuporte) {
         const supNome = document.getElementById('supNome');
         const supEmail = document.getElementById('supEmail');
@@ -187,11 +180,199 @@ document.addEventListener("DOMContentLoaded", function() {
 
         formSuporte.addEventListener('submit', function(evento) {
             evento.preventDefault(); 
-        
             alert('Sua mensagem foi enviada com sucesso! Nossa equipe entrará em contato em breve.');
-
             document.getElementById('supAssunto').value = '';
             document.getElementById('supMensagem').value = '';
         });
     }
+
+    const btnMinhaConta = document.querySelector('.btn-cta');
+    const nomeSalvo = localStorage.getItem('usuarioNome');
+    
+    if (btnMinhaConta && nomeSalvo) {
+        const primeiroNome = nomeSalvo.split(' ')[0];
+        btnMinhaConta.textContent = `Olá, ${primeiroNome} ❯`;
+    }
+
+    const mostrarToast = (mensagem) => {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            document.body.appendChild(container);
+        }
+        
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = mensagem;
+        container.appendChild(toast);
+        
+        setTimeout(() => toast.classList.add('mostrar'), 10);
+        
+        setTimeout(() => {
+            toast.classList.remove('mostrar');
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    };
+
+    let carteiraCupons = JSON.parse(localStorage.getItem('carteiraCupons')) || [];
+        
+    const atualizarContador = () => {
+        const contador = document.getElementById('contadorCarteira');
+        if (contador) contador.textContent = carteiraCupons.length;
+    };
+    
+    const renderizarCarteira = () => {
+        const container = document.getElementById('itensCarteira');
+        if (!container) return;
+        
+        container.innerHTML = ''; 
+        
+        if (carteiraCupons.length === 0) {
+            container.innerHTML = '<p style="text-align:center; color:#888; margin-top: 20px;">Sua carteira está vazia.</p>';
+            return;
+        }
+        
+        carteiraCupons.forEach((cupom, index) => {
+            const div = document.createElement('div');
+            div.className = 'item-carteira';
+            div.innerHTML = `
+                <h4>${cupom.nome}</h4>
+                <p>📍 ${cupom.loja}</p>
+                <div class="preco">${cupom.preco}</div>
+                <button class="btn-remover-item" data-index="${index}">X</button>
+            `;
+            container.appendChild(div);
+        });
+        
+        document.querySelectorAll('.btn-remover-item').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = this.getAttribute('data-index');
+                const cupomRemovido = carteiraCupons[index]; 
+                
+                carteiraCupons.splice(index, 1); 
+                localStorage.setItem('carteiraCupons', JSON.stringify(carteiraCupons));
+                renderizarCarteira();
+                atualizarContador();
+                
+                document.querySelectorAll('.card-produto').forEach(card => {
+                    if (card.querySelector('h3').textContent === cupomRemovido.nome) {
+                        const btnRestaurar = card.querySelector('.btn-pegar-cupom');
+                        if (btnRestaurar) {
+                            btnRestaurar.textContent = 'Pegar Cupom';
+                            btnRestaurar.style.background = '';
+                            btnRestaurar.style.pointerEvents = 'auto';
+                        }
+                    }
+                });
+            });
+        });
+    };
+
+    const btnsPegarCupom = document.querySelectorAll('.btn-pegar-cupom');
+    if (btnsPegarCupom.length > 0) {
+        btnsPegarCupom.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const card = this.closest('.card-produto');
+                const nome = card.querySelector('h3').textContent;
+                const loja = card.querySelector('.loja-vendedora') ? card.querySelector('.loja-vendedora').textContent : 'Loja Parceira';
+                const preco = card.querySelector('.preco-novo') ? card.querySelector('.preco-novo').textContent : 'Cupom de Desconto';
+                
+                carteiraCupons.push({ nome, loja, preco });
+                localStorage.setItem('carteiraCupons', JSON.stringify(carteiraCupons));
+                
+                this.textContent = 'Salvo ✔️';
+                this.style.background = 'linear-gradient(135deg, #28a745, #218838)';
+                this.style.pointerEvents = 'none';
+            
+                mostrarToast('Cupom adicionado à sua carteira! 🛒');
+                atualizarContador();
+                renderizarCarteira();
+                abrirCarteira();
+            });
+        });
+    }
+    
+    const painelCarteira = document.getElementById('painelCarteira');
+    const overlayCarteira = document.getElementById('overlayCarteira');
+    const btnCarteira = document.getElementById('btnCarteira');
+    const fecharCarteira = document.getElementById('fecharCarteira');
+    const limparCarteira = document.getElementById('limparCarteira');
+    
+    const abrirCarteira = () => {
+        if(painelCarteira) painelCarteira.classList.add('aberto');
+        if(overlayCarteira) overlayCarteira.classList.add('ativo');
+    };
+    const fecharPainelCarteira = () => {
+        if(painelCarteira) painelCarteira.classList.remove('aberto');
+        if(overlayCarteira) overlayCarteira.classList.remove('ativo');
+    };
+    
+    if(btnCarteira) btnCarteira.addEventListener('click', abrirCarteira);
+    if(fecharCarteira) fecharCarteira.addEventListener('click', fecharPainelCarteira);
+    if(overlayCarteira) overlayCarteira.addEventListener('click', fecharPainelCarteira);
+    
+    if(limparCarteira) {
+        limparCarteira.addEventListener('click', () => {
+            carteiraCupons = []; 
+            localStorage.setItem('carteiraCupons', JSON.stringify(carteiraCupons));
+            renderizarCarteira();
+            atualizarContador();
+            
+            document.querySelectorAll('.btn-pegar-cupom').forEach(btn => {
+                btn.textContent = 'Pegar Cupom';
+                btn.style.background = ''; 
+                btn.style.pointerEvents = 'auto'; 
+            });
+        }); 
+    } 
+    
+    const botoesFiltro = document.querySelectorAll('.btn-filtro');
+    const cardsProdutosFiltro = document.querySelectorAll('.card-produto'); 
+
+    if (botoesFiltro.length > 0) {
+        botoesFiltro.forEach(btn => {
+            btn.addEventListener('click', function() {
+                botoesFiltro.forEach(b => b.classList.remove('ativo'));
+                this.classList.add('ativo');
+
+                const categoriaClicada = this.getAttribute('data-filtro');
+
+                cardsProdutosFiltro.forEach(card => {
+                    const categoriaDoProduto = card.getAttribute('data-categoria');
+                    
+                    if (categoriaClicada === 'todos' || categoriaClicada === categoriaDoProduto) {
+                        card.style.display = 'block'; 
+                        card.style.animation = 'fadeIn 0.5s'; 
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    const sincronizarBotoes = () => {
+        document.querySelectorAll('.card-produto, .card-cupom').forEach(card => {
+            const titulo = card.querySelector('h3') ? card.querySelector('h3').textContent : null;
+            const btn = card.querySelector('.btn-pegar-cupom');
+            
+            if (titulo && btn) {
+                const jaSalvo = carteiraCupons.some(cupom => cupom.nome === titulo);
+                
+                if (jaSalvo) {
+                    btn.textContent = 'Salvo ✔️';
+                    btn.style.background = 'linear-gradient(135deg, #28a745, #218838)';
+                    btn.style.pointerEvents = 'none';
+                }
+            }
+        });
+    };
+    
+    sincronizarBotoes();
+    atualizarContador();
+    renderizarCarteira();
+
 });

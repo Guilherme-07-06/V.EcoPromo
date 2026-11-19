@@ -30,6 +30,7 @@
                 <input type="text" id="inputBusca" placeholder="Buscar produto...">
                 <span>🔍</span>
             </div>
+            <button id="btnCarteira" class="btn-carteira">🛒 Carteira <span id="contadorCarteira">0</span></button>
             <a href="perfil.html" class="btn-cta">Minha Conta ❯</a>
         </div>
     </nav>
@@ -221,6 +222,20 @@
             <div class="codigo-destaque" id="modalCodigo">CÓDIGO</div>
         </div>
     </div>
+
+        <div id="overlayCarteira" class="overlay-carteira"></div>
+    <div id="painelCarteira" class="painel-carteira">
+        <div class="carteira-header">
+            <h3>Meus Cupons</h3>
+            <button id="fecharCarteira" class="btn-fechar-carteira">&times;</button>
+        </div>
+        <div id="itensCarteira" class="carteira-body">
+        </div>
+        <div class="carteira-footer">
+            <button id="limparCarteira" class="btn-limpar">Esvaziar Carteira</button>
+        </div>
+    </div>
+    
      <script src="script.js"></script>
     
 </body>

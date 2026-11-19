@@ -31,6 +31,7 @@
                 <input type="text" id="inputBusca" placeholder="Buscar produto...">
                 <span>🔍</span>
             </div>
+            <button id="btnCarteira" class="btn-carteira">🛒 Carteira <span id="contadorCarteira">0</span></button>
             <a href="perfil.html" class="btn-cta">Minha Conta ❯</a>
         </div>
     </nav>
@@ -41,8 +42,16 @@
             <p>Aproveite os produtos e os descontos antes que o estoque acabe!</p>
         </div>
 
+      <div class="filtros-container">
+    <button class="btn-filtro ativo" data-filtro="todos">Todos</button>
+    <button class="btn-filtro" data-filtro="alimentos">Alimentos</button>
+    <button class="btn-filtro" data-filtro="bebidas">Bebidas</button>
+    <button class="btn-filtro" data-filtro="limpeza">Limpeza</button>
+    <button class="btn-filtro" data-filtro="farmacia">Farmácia</button>
+    </div>
+
     <div class="grid-produtos">
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="alimentos">
                 <div class="badge-desconto">-40%</div>
                 <img src="imagens/Arroz.jpg" alt="Arroz Branco" class="img-produto-real">
                 <h3>Arroz Branco 5kg</h3>
@@ -51,7 +60,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="alimentos">
                 <img src="imagens/Feijao.webp" alt="Feijão Carioca" class="img-produto-real">
                 <h3>Feijão Carioca 1kg</h3>
                 <p class="loja-vendedora">🏪 Mercado ValeBom</p>
@@ -59,7 +68,7 @@
                 <button class="btn-sem-cupom" disabled>Preço Padrão</button>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="alimentos">
                 <div class="badge-desconto">-30%</div>
                 <img src="imagens/Cafe.jpg" alt="Café Torrado" class="img-produto-real">
                 <h3>Café Três Corações 500g</h3>
@@ -68,7 +77,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="limpeza">
                 <div class="badge-desconto">-25%</div>
                 <img src="imagens/sabao.webp" alt="Sabão em Pó" class="img-produto-real">
                 <h3>Sabão em Pó 1kg</h3>
@@ -77,7 +86,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="limpeza">
                 <img src="imagens/Amaciante.webp" alt="Amaciante 2L" class="img-produto-real">
                 <h3>Amaciante 2L</h3>
                 <p class="loja-vendedora">🏪 Mercado ValeBom</p>
@@ -94,7 +103,7 @@
                 <button class="btn-sem-cupom" disabled>Preço Padrão</button>
             </div>
             
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="farmacia">
                 <div class="badge-desconto">-35%</div>
                 <img src="imagens/Vitamina.webp" alt="Vitamina C" class="img-produto-real">
                 <h3>Vitamina C 1g (10 comp)</h3>
@@ -103,7 +112,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="farmacia">
                 <div class="badge-desconto">-20%</div>
                 <img src="imagens/Shampoo.webp" alt="Shampoo" class="img-produto-real">
                 <h3>Shampoo Anticaspa</h3>
@@ -112,7 +121,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="farmacia">
                 <img src="imagens/Sabonete.webp" alt="Sabonete" class="img-produto-real">
                 <h3>Sabonete Líquido 250ml</h3>
                 <p class="loja-vendedora">💊 Farma Saúde</p>
@@ -120,7 +129,7 @@
                 <button class="btn-sem-cupom" disabled>Preço Padrão</button>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="farmacia">
                 <img src="imagens/Hidratante.webp" alt="Hidratante Corporal" class="img-produto-real">
                 <h3>Hidratante Corporal</h3>
                 <p class="loja-vendedora">💊 Farma Saúde</p>
@@ -128,7 +137,7 @@
                 <button class="btn-sem-cupom" disabled>Preço Padrão</button>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="alimentos">
                 <div class="badge-desconto">-30%</div>
                 <img src="imagens/Bolo.jpg" alt="Bolo de Chocolate" class="img-produto-real">
                 <h3>Bolo de Chocolate Inteiro</h3>
@@ -137,7 +146,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="alimentos">
                 <img src="imagens/Pao.jpg" alt="Pão Francês" class="img-produto-real">
                 <h3>Pão de Forma 400g</h3>
                 <p class="loja-vendedora">🍞 Pão Quentinho</p>
@@ -145,7 +154,7 @@
                 <button class="btn-sem-cupom" disabled>Preço Padrão</button>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="alimentos">
                 <div class="badge-desconto">-40%</div>
                 <img src="imagens/Rocambole.webp" alt="Pão de Queijo" class="img-produto-real">
                 <h3>Rocombole</h3>
@@ -154,7 +163,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="bebidas">
                 <div class="badge-desconto">-25%</div>
                 <img src="imagens/suco.jpg" alt="Suco Natural" class="img-produto-real">
                 <h3>Suco de Laranja 450ml</h3>
@@ -163,7 +172,7 @@
                 <a href="cupons.html" class="btn-pegar-cupom">Pegar Cupom</a>
             </div>
 
-            <div class="card-produto">
+            <div class="card-produto" data-categoria="alimentos">
                 <div class="badge-desconto">-20%</div>
                 <img src="imagens/Biscoito.png" alt="Biscoito de Polvilho" class="img-produto-real">
                 <h3>Biscoito de Polvilho</h3>
@@ -174,6 +183,19 @@
 
         </div>
     </main>
+
+    <div id="overlayCarteira" class="overlay-carteira"></div>
+    <div id="painelCarteira" class="painel-carteira">
+        <div class="carteira-header">
+            <h3>Meus Cupons</h3>
+            <button id="fecharCarteira" class="btn-fechar-carteira">&times;</button>
+        </div>
+        <div id="itensCarteira" class="carteira-body">
+        </div>
+        <div class="carteira-footer">
+            <button id="limparCarteira" class="btn-limpar">Esvaziar Carteira</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
